@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>House of Representatives</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width"/>
+        <script type="text/javascript" src="NYT-congress-113-house.js"></script>
+        <link href="style.css" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">New York Times Congress 113</h1>
+            <h3>House of Representatives</h3>
+            <table id="house-data" class="table table-bordered table-striped decoration">
+            </table>
+        </div>
+        <script>
+            var output = "";
+            var i = 0;
+            while (i<data.results[0].members.length){
+                var full_name = data.results[0].members[i].last_name + " " + data.results[0].members[i].first_name + " " + data.results[0].members[i].middle_name;
+                var party = data.results[0].members[i].party;
+                var state = data.results[0].members[i].state;
+                var seniority = data.results[0].members[i].seniority;
+                var percentage_votes_party = data.results[0].members[i].votes_with_party_pct;
+                var url = data.results[0].members[i].url;
+                var name_link = "<a href=\"" + url + "\">" + full_name + "</a>";
+                var header = "<tr><th>Senator</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage Votes Party</th></tr>";
+                output += "<tr><td>" + name_link + "</td><td>" + party + "</td><td>" + state + "</td><td>" + seniority + "</td><td>" + percentage_votes_party + "%" + "</td></tr>";
+                document.getElementById("house-data").innerHTML = header + output;
+                i++;
+            }
+        </script>
+    </body>
+</html>
